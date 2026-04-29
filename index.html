@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadFlow AI — Find Your Next Customer While You Sleep</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 50%, #0f1419 100%);
+            color: #e8e8e8;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 0 80px;
+            background: linear-gradient(180deg, rgba(10,14,26,0.95) 0%, rgba(26,31,46,0.98) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top, rgba(74, 158, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #4a9eff;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        
+        .headline {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 28px;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+        
+        .headline span {
+            background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subheadline {
+            font-size: 22px;
+            color: #a0a8b8;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            font-weight: 400;
+        }
+        
+        .video-container {
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            border-radius: 16px;
+            padding: 50px;
+            margin: 50px auto;
+            max-width: 800px;
+            border: 1px solid #21262d;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1c2128 0%, #131820 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6e7681;
+            font-size: 18px;
+            border: 2px dashed #30363d;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a9eff 0%, #2563eb 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 20px 48px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(74, 158, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(74, 158, 255, 0.4);
+        }
+        
+        .trust-badges {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            color: #6e7681;
+            font-size: 14px;
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            font-size: 42px;
+            color: #ffffff;
+            margin-bottom: 32px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        h3 {
+            font-size: 28px;
+            color: #4a9eff;
+            margin: 48px 0 24px;
+            font-weight: 600;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            color: #c9d1d9;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.08) 0%, rgba(0, 212, 170, 0.08) 100%);
+            border-left: 4px solid #4a9eff;
+            padding: 32px;
+            margin: 40px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .problem-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .problem-list li {
+            padding: 18px 0 18px 48px;
+            position: relative;
+            font-size: 18px;
+            color: #c9d1d9;
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .problem-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .problem-list li:before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            color: #f85149;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .solution-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .solution-list li {
+            padding: 20px 0 20px 48px;
+            position: relative;
+            font-size: 18px;
+            color: #c9d1d9;
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .solution-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .solution-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00d4aa;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            padding: 48px;
+            border-radius: 16px;
+            margin: 48px 0;
+            border: 1px solid #21262d;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 80px;
+            color: #4a9eff;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-size: 22px;
+            font-style: italic;
+            color: #e8e8e8;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            color: #8b949e;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            border: 2px solid #21262d;
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            border-color: #4a9eff;
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.featured {
+            border-color: #4a9eff;
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.1) 0%, rgba(0, 212, 170, 0.05) 100%);
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4a9eff 0%, #2563eb 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        
+        .pricing-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-period {
+            color: #6e7681;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            color: #c9d1d9;
+            font-size: 15px;
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .guarantee {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(74, 158, 255, 0.1) 100%);
+            border: 1px solid #00d4aa;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 48px 0;
+        }
+        
+        .faq-item {
+            margin: 32px 0;
+            padding: 28px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #21262d;
+        }
+        
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4a9eff;
+            margin-bottom: 16px;
+        }
+        
+        .faq-answer {
+            font-size: 17px;
+            color: #c9d1d9;
+            line-height: 1.7;
+        }
+        
+        .final-cta {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(180deg, rgba(26,31,46,0.98) 0%, rgba(10,14,26,0.95) 100%);
+            position: relative;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at bottom, rgba(74, 158, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 48px 0;
+            color: #6e7681;
+            font-size: 14px;
+            border-top: 1px solid #21262d;
+            background: #0a0e1a;
+        }
+        
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 40px;
+            }
+            .subheadline {
+                font-size: 18px;
+            }
+            h2 {
+                font-size: 32px;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <p class="eyebrow">AI-Powered Lead Generation</p>
+            <h1 class="headline">Find Your Next <span>Customer</span> While You Sleep</h1>
+            <p class="subheadline">LeadFlow AI automatically discovers, enriches, and qualifies your ideal leads — then delivers them ready for outreach. No more manual prospecting. No more cold lists. Just warm leads, daily.</p>
+            
+            <div class="video-container">
+                <div class="video-placeholder">
+                    [VSL Video Will Be Embedded Here]
+                </div>
+            </div>
+            
+            <a href="#pricing" class="cta-button">Start Free Trial — 50 Leads</a>
+            
+            <div class="trust-badges">
+                <span class="trust-badge">✓ No credit card required</span>
+                <span class="trust-badge">✓ Cancel anytime</span>
+                <span class="trust-badge">✓ 30-day guarantee</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="section">
+        <div class="container">
+            <h2>The Brutal Truth About Lead Generation</h2>
+            <p>You're spending 10+ hours every week on manual prospecting. Scrolling LinkedIn. Copy-pasting emails. Buying outdated lists. Sending cold outreach that gets ignored. And at the end of the month? Maybe 2-3 qualified leads.</p>
+            
+            <p>Meanwhile, your competitors seem to have an endless pipeline. They're closing deals while you're still researching. What's their secret?</p>
+            
+            <h3>Here's What You're Doing Wrong:</h3>
+            <ul class="problem-list">
+                <li>Manually searching for prospects (3+ hours/day wasted)</li>
+                <li>Buying email lists that are 40% outdated</li>
+                <li>Sending generic cold emails that get 0.5% response rates</li>
+                <li>Missing decision-makers because you can't find their contact info</li>
+                <li>Spending hours researching each lead before outreach</li>
+                <li>Having no system — just random acts of prospecting</li>
+                <li>Competing with 50+ other salespeople for the same leads</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>The math is brutal:</strong> If your time is worth $100/hour and you spend 10 hours/week prospecting, that's $4,000/month in lost productivity. For leads that mostly go nowhere.</p>
+            </div>
+            
+            <p>What if you could flip the script? What if leads came to you — pre-qualified, enriched with data, ready for outreach — while you focused on closing?</p>
+        </div>
+    </section>
+
+    <!-- THE SOLUTION -->
+    <section class="section">
+        <div class="container">
+            <h2>Introducing LeadFlow AI</h2>
+            <p>The first AI-powered lead generation platform that works 24/7 to find your ideal customers. It doesn't just give you lists — it delivers <strong>qualified, ready-to-contact leads</strong> with personalized icebreakers.</p>
+            
+            <h3>How It Works:</h3>
+            <ul class="solution-list">
+                <li><strong>AI Discovers Leads</strong> — Scans LinkedIn, company websites, job postings, news, and 50+ sources in real-time</li>
+                <li><strong>Auto-Enriches Data</strong> — Finds emails, phone numbers, job titles, company info, tech stack</li>
+                <li><strong>AI Qualifies & Scores</strong> — Ranks leads by fit, intent, and likelihood to buy (0-100 score)</li>
+                <li><strong>Generates Icebreakers</strong> — Creates personalized opening lines based on recent news, posts, company updates</li>
+                <li><strong>Delivers Daily</strong> — Fresh leads in your dashboard every morning, ready for outreach</li>
+                <li><strong>Integrates Seamlessly</strong> — Syncs with HubSpot, Salesforce, Pipedrive, or exports to CSV</li>
+            </ul>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"We were spending $5,000/month on lead lists with 30% bounce rates. LeadFlow AI cut our cost by 70% and doubled our qualified meetings. The AI icebreakers alone increased our reply rate from 3% to 18%."</p>
+                <p class="testimonial-author">— Marcus Chen, Sales Director at TechFlow Solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="section">
+        <div class="container">
+            <h2>This Is For You If...</h2>
+            <p>✓ You're a B2B sales rep spending more time prospecting than selling</p>
+            <p>✓ You run a small business and can't afford a full-time SDR</p>
+            <p>✓ Your current lead lists are outdated, expensive, or low-quality</p>
+            <p>✓ You want predictable pipeline without hiring more people</p>
+            <p>✓ You sell to specific industries and need targeted leads</p>
+            <p>✓ You're tired of manual research and data entry</p>
+            <p>✓ You want to scale outreach without scaling headcount</p>
+            
+            <div class="highlight-box">
+                <p><strong>This is NOT for you if:</strong> You sell B2C, you only need 5 leads per month, or you're happy with your current prospecting process. LeadFlow AI is built for serious B2B sellers who need volume + quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <p style="text-align: center; color: #8b949e; margin-bottom: 48px;">Start free. Scale as you grow. No contracts, no setup fees.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Starter</div>
+                    <div class="pricing-price">$49</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>100 AI-qualified leads/mo</li>
+                        <li>Basic search filters</li>
+                        <li>Email finder</li>
+                        <li>CSV export</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 14px 32px; font-size: 16px;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-name">Growth</div>
+                    <div class="pricing-price">$149</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>500 AI-qualified leads/mo</li>
+                        <li>Advanced AI scoring</li>
+                        <li>AI-generated icebreakers</li>
+                        <li>CRM sync (HubSpot, SF, Pipedrive)</li>
+                        <li>Priority support</li>
+                        <li>Team collaboration</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 14px 32px; font-size: 16px;">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-name">Scale</div>
+                    <div class="pricing-price">$399</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited leads</li>
+                        <li>API access</li>
+                        <li>Custom integrations</li>
+                        <li>Dedicated account manager</li>
+                        <li>SLA guarantee</li>
+                        <li>White-label options</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 14px 32px; font-size: 16px;">Contact Sales</a>
+                </div>
+            </div>
+            
+            <div class="guarantee">
+                <h3 style="color: #00d4aa; margin-bottom: 16px; font-size: 24px;">30-Day Money-Back Guarantee</h3>
+                <p style="font-size: 18px; color: #c9d1d9;">Try LeadFlow AI risk-free for 30 days. If you're not getting qualified leads that convert, email us for a full refund. No questions, no hassle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">Where does the lead data come from?</p>
+                <p class="faq-answer">We aggregate data from 50+ sources including LinkedIn, company websites, job postings, news articles, press releases, and public records. All data is GDPR-compliant and sourced ethically.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">How accurate are the email addresses?</p>
+                <p class="faq-answer">We verify every email in real-time using multiple validation methods. Our bounce rate is under 5% — compared to 30-40% for typical purchased lists.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Can I integrate with my CRM?</p>
+                <p class="faq-answer">Yes! We integrate with HubSpot, Salesforce, Pipedrive, Zoho, and 20+ other CRMs. You can also export to CSV or use our API for custom integrations.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">What makes your AI scoring different?</p>
+                <p class="faq-answer">Our AI analyzes 50+ data points including company size, growth signals, tech stack, hiring activity, recent funding, and more to predict buying intent. Each lead gets a 0-100 score so you prioritize the best opportunities.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Is there a free trial?</p>
+                <p class="faq-answer">Yes! Start with 50 free leads — no credit card required. See the quality for yourself before committing.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Can I cancel anytime?</p>
+                <p class="faq-answer">Absolutely. No annual contracts, no cancellation fees. Cancel from your dashboard or email us — we'll process it immediately.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop Prospecting. Start Closing.</h2>
+            <p style="font-size: 20px; color: #a0a8b8; max-width: 600px; margin: 0 auto 40px;">Join 500+ sales teams who've replaced manual prospecting with AI-powered lead generation. Your next customer is waiting.</p>
+            <a href="#" class="cta-button">Get 50 Free Leads — Start Now</a>
+            <p style="margin-top: 32px; color: #6e7681; font-size: 15px;">No credit card required • 30-day guarantee • Cancel anytime</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 LeadFlow AI. All rights reserved.</p>
+            <p style="margin-top: 12px;">Questions? Contact us at hello@leadflow.ai</p>
+        </div>
+    </footer>
+</body>
+</html>
